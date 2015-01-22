@@ -1,6 +1,4 @@
-# mysql-insert-progress
-
-Track large MySQL insert progress
+Monitor the progress of large MySQL insert/import
 
 # Introduction
 
