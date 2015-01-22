@@ -12,6 +12,9 @@ if [ ! -f $FILE ]; then
     exit
 fi
 
+# MySql Executable. Add user/password here
+MYSQL="/usr/bin/mysql"
+
 # The SQL we're looking for. If doing a batch UPDATE, change this.
 SQL="INSERT INTO.{70}"
 
@@ -25,7 +28,7 @@ LAST_LINE=2
 while [ $PCI -lt 99 ]
 do
 	# Get the currently executing SQL Statement
-	LINE_PART=`mysql -A -e "show full processlist" | egrep -oh "$SQL"`
+	LINE_PART=`${MYSQL} -A -e "show full processlist" | egrep -oh "$SQL"`
 	# Find the line number
 	LINE_NUM=`grep -n -m 1 "$LINE_PART" $FILE | cut -f1 -d:`
 	# To percentage
